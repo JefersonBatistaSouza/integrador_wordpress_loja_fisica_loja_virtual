@@ -8,7 +8,10 @@ package view;
 import config.Banco_de_Dados;
 import config.Conexao;
 import config.configuracao;
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -518,6 +521,11 @@ public class Home extends javax.swing.JFrame {
         jButton8.setBackground(new java.awt.Color(0, 153, 0));
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setText("Contatar Whatsapp");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jLabel16.setText("E-mail");
 
@@ -766,6 +774,18 @@ public class Home extends javax.swing.JFrame {
         codigo5.setText("");
         tf_logcadastro.setText("");
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // Abri o suporte do whatsapp:
+        String[] args;
+        try{
+            String msg = "Necessito de Suporte para o Integrador do Wordpress OS:"+Math.random();
+            URI link = new URI("https://api.whatsapp.com/send?phone=5569999495553&text="+msg.replaceAll(" ", "%20"));
+            Desktop.getDesktop().browse(link);
+        }catch(IOException | URISyntaxException erro){
+            JOptionPane.showMessageDialog(null, erro);
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
